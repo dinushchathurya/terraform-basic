@@ -1,7 +1,7 @@
 resource "aws_security_group" "demo-sg" {
-    name        = "demo-sg"
+    name        = var.sg_name
     description = "Allow all inbound traffic"
-    vpc_id      = aws_vpc.demo.id
+    vpc_id      = var.vpc_id
 
     ingress {
         from_port   = 443
@@ -18,7 +18,6 @@ resource "aws_security_group" "demo-sg" {
         ipv6_cidr_blocks = ["::/0"]
     }
 
-    tags = {
-        Name = "demo-sg"
-    }
+    tags = var.tags
 }
+
