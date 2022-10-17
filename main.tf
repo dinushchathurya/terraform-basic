@@ -6,7 +6,7 @@ module "aws_vpc" {
 
 module "aws_subnet" {
     source      = "./modules/aws-subnet"
-    vpc_id      = var.vpc_id
+    vpc_id      = module.aws_vpc.vpc_id
     subnet_cidr = var.subnet_cidr
     subnet_az   = var.subnet_az
     tags        = var.tags   
@@ -15,7 +15,7 @@ module "aws_subnet" {
 module "aws_sg" {
     source  = "./modules/aws-sg"
     sg_name = var.sg_name
-    vpc_id  = var.vpc_id
+    vpc_id  = module.aws_vpc.vpc_id
     tags    = var.tags
 }
 
