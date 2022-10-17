@@ -13,13 +13,23 @@ module "aws_subnet" {
 }
 
 module "aws_sg" {
-    source = "./modules/aws-sg"
+    source  = "./modules/aws-sg"
+    sg_name = var.sg_name
+    vpc_id  = var.vpc_id
+    tags    = var.tags
 }
 
 module "aws_nic" {
-    source = "./modules/aws-nic"
+    source      = "./modules/aws-nic"
+    subnet_id   = var.subnet_id
+    tags        = var.tags
+    private_ips = var.private_ips
 }
 
 module "aws_instance" {
     source = "./modules/aws-instance"
+    instance_type = var.instance_type
+    instance_ami  = var.instance_ami
+    nic_id        = var.nic_id
+    tags          = var.tags
 }
