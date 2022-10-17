@@ -1,5 +1,5 @@
 resource "aws_instance" "demo-instance" {
-    ami           = var.ami
+    ami           = var.instance_ami
     instance_type = var.instance_type
    
     network_interface {

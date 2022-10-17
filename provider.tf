@@ -1,4 +1,4 @@
 provider "aws" {
-    profile = "Administrator"
+    # profile = "Administrator"
     region = "us-east-1"
 }

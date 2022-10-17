@@ -1,5 +1,5 @@
-resource "aws_security_group" "demo-sg" {
-    name        = var.sg_name
+resource "aws_security_group" "demo-security-group" {
+    name        = var.security_name
     description = "Allow all inbound traffic"
     vpc_id      = var.vpc_id
 
