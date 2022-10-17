@@ -15,13 +15,13 @@ module "aws_subnet" {
 module "aws_sg" {
     source  = "./modules/aws-sg"
     sg_name = var.sg_name
-    vpc_id  = module.aws_vpc.vpc_id
+    vpc_id  = module.aws_vpc.vpc_id // This is the output from the aws_vpc module output.tf
     tags    = var.tags
 }
 
 module "aws_nic" {
     source      = "./modules/aws-nic"
-    subnet_id   = var.subnet_id
+    subnet_id   = module.aws_subnet.subnet_id // This is the output from the aws_subnet module output.tf
     tags        = var.tags
     private_ips = var.private_ips
 }
@@ -30,6 +30,6 @@ module "aws_instance" {
     source = "./modules/aws-instance"
     instance_type = var.instance_type
     instance_ami  = var.instance_ami
-    nic_id        = var.nic_id
+    nic_id        = module.aws_nic.nic_id // This is the output from the aws_nic module output.tf
     tags          = var.tags
 }
