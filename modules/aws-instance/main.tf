@@ -9,4 +9,3 @@ resource "aws_instance" "demo-instance" {
     
     tags = var.tags
 }
-
